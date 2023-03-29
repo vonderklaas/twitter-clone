@@ -1,12 +1,12 @@
 import { create } from 'zustand';
 
-interface LoginModalStore {
+interface RegisterModalStore {
   isOpen: boolean;
   onOpen: () => void;
   onClose: () => void;
 }
 
-export const useLoginModal = create<LoginModalStore>((set) => ({
+export const useRegisterModal = create<RegisterModalStore>((set) => ({
   // The initial state of the store
   isOpen: false,
   onOpen: () => set({ isOpen: true }),
