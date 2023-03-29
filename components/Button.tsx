@@ -8,7 +8,7 @@ interface ButtonProps {
   outline?: boolean;
 }
 
-const Button = ({
+export const Button = ({
   label,
   secondary,
   fullWidth,
@@ -45,5 +45,3 @@ const Button = ({
     </button>
   );
 };
-
-export default Button;
