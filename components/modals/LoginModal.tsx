@@ -1,6 +1,6 @@
-// import { signIn } from "next-auth/react";
+import { signIn } from 'next-auth/react';
 import { useCallback, useState } from 'react';
-// import { toast } from "react-hot-toast";
+import { toast } from 'react-hot-toast';
 
 import { Input } from '../Input';
 import { Modal } from '../Modal';
@@ -19,20 +19,20 @@ export const LoginModal = () => {
     try {
       setIsLoading(true);
 
-      // await signIn('credentials', {
-      //   email,
-      //   password,
-      // });
+      await signIn('credentials', {
+        email,
+        password,
+      });
 
-      // toast.success('Logged in');
+      toast.success('Logged in');
 
       loginModal.onClose();
     } catch (error) {
-      // toast.error('Something went wrong');
+      toast.error('Something went wrong');
     } finally {
       setIsLoading(false);
     }
-  }, [loginModal]);
+  }, [email, loginModal, password]);
 
   const onToggle = useCallback(() => {
     loginModal.onClose();
@@ -43,6 +43,7 @@ export const LoginModal = () => {
     <div className='flex flex-col gap-4'>
       <Input
         placeholder='Email'
+        type='email'
         onChange={(e) => setEmail(e.target.value)}
         value={email}
         disabled={isLoading}
