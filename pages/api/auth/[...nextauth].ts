@@ -4,6 +4,7 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 
 import { client as prisma } from '../../../libs/prismadb';
+import { User } from '@prisma/client';
 
 export default NextAuth({
   // Configure one or more authentication providers
@@ -23,15 +24,15 @@ export default NextAuth({
         // You need to provide your own logic here that takes the credentials
         // submitted and returns either a object representing a user or value
         // that is false/null if the credentials are invalid.
-        const user = await prisma.user.findUnique({
+        const user: User | null = await prisma.user.findUnique({
           where: { email: credentials.email },
         });
-        if (!user && !user?.hashedPassword!) {
+        if (!user || !user.hashedPassword) {
           throw new Error('Invalid credentials');
         }
-        const isCorrectPassword = await bcrypt.compare(
+        const isCorrectPassword = bcrypt.compare(
           credentials.password,
-          user?.hashedPassword
+          user?.hashedPassword!
         );
         if (!isCorrectPassword) {
           throw new Error('Invalid credentials');
