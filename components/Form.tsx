@@ -96,7 +96,7 @@ export const Form = ({ placeholder, isComment, postId }: FormProps) => {
       ) : (
         <div className='py-8'>
           <h1 className='text-white text-2xl text-center mb-4 font-bold'>
-            Welcome to Dreamers
+            Welcome to Twitter Clone
           </h1>
           <div className='flex flex-row items-center justify-center gap-4'>
             <Button label='Login' onClick={loginModal.onOpen} />
