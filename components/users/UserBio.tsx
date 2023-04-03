@@ -4,7 +4,7 @@ import { format } from 'date-fns';
 
 import { useCurrentUser } from '../../hooks/useCurrentUser';
 import { useUser } from '../../hooks/useUser';
-// import { useFollow } from '../../hooks/useFollow';
+import { useFollow } from '../../hooks/useFollow';
 import { useEditModal } from '../../hooks/useEditModal';
 
 import { Button } from '../Button';
@@ -19,7 +19,7 @@ export const UserBio = ({ userId }: UserBioProps) => {
 
   const editModal = useEditModal();
 
-  // const { isFollowing, toggleFollow } = useFollow(userId);
+  const { isFollowing, toggleFollow } = useFollow(userId);
 
   const createdAt = useMemo(() => {
     if (!fetchedUser?.createdAt) {
@@ -36,15 +36,11 @@ export const UserBio = ({ userId }: UserBioProps) => {
         {currentUser?.id === userId ? (
           <Button secondary label='Edit' onClick={editModal.onOpen} />
         ) : (
-          // <button>edit</button>
-          // <button>follow</button>
           <Button
-            label='Follow'
-            secondary
-            onClick={() => {}}
-            // label={isFollowing ? 'Unfollow' : 'Follow'}
-            // secondary={!isFollowing}
-            // outline={isFollowing}
+            onClick={toggleFollow}
+            label={isFollowing ? 'Unfollow' : 'Follow'}
+            secondary={!isFollowing}
+            outline={isFollowing}
           />
         )}
       </div>
