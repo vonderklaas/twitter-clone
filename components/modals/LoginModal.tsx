@@ -61,7 +61,7 @@ export const LoginModal = () => {
   const footerContent = (
     <div className='text-neutral-400 text-center mt-4'>
       <p>
-        First time using Twitter?
+        First time using Dreamers?
         <span
           onClick={onToggle}
           className='
