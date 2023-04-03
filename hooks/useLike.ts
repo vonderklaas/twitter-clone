@@ -35,8 +35,10 @@ export const useLike = ({
       let request;
 
       if (hasLiked) {
+        // Delete request if user has already liked the post
         request = () => axios.delete('/api/like', { data: { postId } });
       } else {
+        // Post request if user has not liked the post
         request = () => axios.post('/api/like', { postId });
       }
 
