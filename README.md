@@ -1,6 +1,6 @@
 ### Twitter Clone
 
-Twitter Clone with React, Tailwind CSS, Next, Prisma ORM, MongoDB, NextAuth & Vercel. Lots of features are provided, as well as stunning and smooth UI
+This is a "React" based Twitter replica utilizing Tailwind, Next.js, Prisma, MongoDB, NextAuth and Vercel. This application is enriched with various functionalities and seamless user interface.
 
 ### URL
 
